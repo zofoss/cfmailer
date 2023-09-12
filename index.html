@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cfmailer</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.10/pico.min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/main.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+    <nav>
+      <a href="/">
+        <ul>
+          <img src="/assets/logo.svg" alt="Logo">
+          <li><strong>cfMailer</strong></li>
+        </ul>
+      </a>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a target="_blank" href="https://github.com/zofoss/cfmailer.git">GitHub</a></li>
+      </ul>
+    </nav>
+    <progress></progress>
+    <hgroup>
+      <h1>Welcome!</h1>
+      <h2>Please select a mode of operation to get started :)</h2>
+    </hgroup>
+    <div class="home">
+      <div class="grid strt">
+        <article tabindex="0" id="list" onclick="start(this)">
+          <h2>MailList</h2>
+          <p>Effortlessly manage bulk emails. Good for email campaigns, mail lists, newsletters.</p>
+        </article>
+        <article tabindex="0" id="ind" onclick="start(this)">
+          <h2>Individual</h2>
+          <p>Personalized messaging made easy. Send tailored emails to specific individuals with a click.</p>
+        </article>
+      </div>
+    </div>
+    <dialog>
+      <article>
+        <header>
+          <a href="#" onclick="closeDialog(event)" aria-label="Close" class="close"></a>
+          <span>Success!</span>
+        </header>
+        <p>Your email(s) have been sent successfully</p>
+        <pre>
+        <code></code>
+      </pre>
+        <footer>
+          <a href="#cancel" onclick="resp(event)" role="button" class="secondary">Show response</a>
+          <a href="#confirm" onclick="closeDialog(event)" role="button">Close</a>
+        </footer>
+      </article>
+    </dialog>
+    <form action="/mail" method="POST">
+      <label for="mode">Current Mode</label>
+      <select name="mode" onchange="exchange(this)" id="mode" required>
+        <option value="list">MailList</option>
+        <option value="ind">Individual</option>
+      </select>
+      <label for="from">From user</label>
+      <input type="text" id="from" name="from" placeholder="abc" required>
+      <small>user: abc -> abc@zofoss.org</small>
+      <div id="mlistContainer">
+        <label for="mlist">Receivers List</label>
+        <textarea rows="2" id="mlist" name="mlist" placeholder="abc@example.com, adb@android.com" required></textarea>
+      </div>
+
+      <div id="emailContainer">
+        <label for="email">Receiver's mail address</label>
+        <input type="email" id="email" name="email" placeholder="abc@example.com" required>
+      </div>
+      <label for="subj">Subject</label>
+      <input maxlength="213" type="text" id="subj" name="subj" placeholder="Regarding complaint 5214" required>
+      <small>213 characters max</small>
+      <label for="ctype">Body Content Type</label>
+      <select onchange="changePlaceholder(this)" name="ctype" id="ctype" required>
+        <option value="text/plain; charset=utf-8" selected>Plain Text</option>
+        <option value="text/html; charset=utf-8">HTML</option>
+      </select>
+      <label for="body">Body</label>
+      <textarea rows="7" id="body" name="body" placeholder="Dear John Doe,
+
+Thank you for reaching out to us regarding your recent concern. We sincerely apologize for any inconvenience you may have experienced, and we appreciate your patience as we address this issue.
+        
+Sincerely,
+Raju Rastogi
+Customer Support Team
+ZoFoss" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+</body>
+
+</html>

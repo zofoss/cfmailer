@@ -1,0 +1,8 @@
+node_modules
+dkim_record.txt
+priv_key.pem
+private_key.pem
+private_key.txt
+record.txt
+package.json
+package-lock.json

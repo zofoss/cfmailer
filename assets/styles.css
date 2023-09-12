@@ -1,0 +1,96 @@
+/* picocss */
+/* Light scheme */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --primary: #1e88e5;
+  --primary-hover: #07488a; /* Adjusted light mode hover color */
+  --primary-focus: rgba(30, 136, 229, 0.125);
+  --primary-inverse: #FFF;
+}
+
+/* Dark scheme (Auto) */
+/* Automatically enabled if the user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #1e88e5;
+    --primary-hover: #3d6fbb; /* Adjusted dark mode hover color */
+    --primary-focus: rgba(30, 136, 229, 0.25);
+    --primary-inverse: #FFF;
+  }
+}
+
+/* Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+  --primary: #1e88e5;
+  --primary-hover: #3d6fbb; /* Adjusted dark mode hover color */
+  --primary-focus: rgba(30, 136, 229, 0.25);
+  --primary-inverse: #FFF;
+}
+
+/* Blue (Common styles) */
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+}
+
+/* picocss */
+
+nav img {
+  padding-left: 13px;
+  width: 48px;
+}
+
+nav strong {
+  color: var(--h1-color)
+}
+nav a:focus{
+background-color: transparent;
+}
+
+form {
+  /* form hidden by default */
+  display: none;
+}
+
+progress {
+  /* to avoid layout shifting, visiblity good instead of display:none */
+  visibility: hidden;
+}
+
+main {
+  padding-top: 20px;
+}
+
+.strt article {
+  margin: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 250ms;
+  border: 2px solid var(--code-kbd-background-color);
+  box-shadow: 7px 9px var(--primary);
+}
+
+.strt article:hover, .strt article:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0;
+}
+
+.strt article:active {
+  box-shadow: 0 0;
+  transform: scale(.96);
+}
+dialog pre {
+  display: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* keyboard users */
+:focus-visible {
+  outline: 2px solid #007bff; 
+  outline-offset: 2px
+}
